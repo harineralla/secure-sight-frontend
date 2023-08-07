@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import {
-  Row,
-  Col,
   Card,
-  Form,
   CardBody,
+  Col,
+  Row,
   CardTitle,
-  CardSubtitle,
   Container,
+  Label,
+  Input,
+  Form,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from "reactstrap";
 import Dropzone from "react-dropzone";
 
@@ -20,7 +25,10 @@ import ApiServices from "../../../Network_call/apiservices";
 import ApiEndPoints from "../../../Network_call/ApiEndPoints";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
+import ConnectorList from "../connectorList";
 import axios from "axios";
+
+
 const chunkSize = 10000 * 1000;
 const ConnectorUploader = () => {
   document.title =
@@ -28,6 +36,8 @@ const ConnectorUploader = () => {
   const [selectedFiles, setselectedFiles] = useState([]);
   const [connectortData, setConnectortData] = useState([]);
   const [openLoader, setOpenLoader] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState('');
   const [state, setState] = useState({
     currentFile: undefined,
     previewImage: undefined,
@@ -237,95 +247,126 @@ const ConnectorUploader = () => {
     }
   };
 
+  const languageOptions = [
+    { value: "nodejs", label: "Node js" },
+    { value: "python", label: "Python" },
+    { value: "rust", label: "Rust" },
+    { value: "Java", label: "Java" },
+  ];
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleLanguageSelect = (event) => {
+    setSelectedLanguage(event.target.value);
+  };
+
+
   return (
     <React.Fragment>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
 
       <div className="page-content">
-        <Container fluid={true}>
-          <Breadcrumbs title="Connector" breadcrumbItem="Connector Upload" />
-
-          <Row>
-            <Col className="col-12">
-              <Card>
-                <CardBody>
-                  <CardTitle>Connector Upload</CardTitle>
-                  <CardSubtitle className="mb-3"></CardSubtitle>
-                  <Form className="dropzone">
-                    <Dropzone
-                      onDrop={(acceptedFiles) => {
-                        handleAcceptedFiles(acceptedFiles);
-                      }}
-                    >
-                      {({ getRootProps, getInputProps }) => (
-                        <div style={{ textAlign: "center" }}>
-                          <div
-                            className="dz-message needsclick"
-                            {...getRootProps()}
-                          >
-                            <input {...getInputProps()} />
-                            <div className="mb-3">
-                              <i className="display-4 text-muted mdi mdi-cloud-upload-outline"></i>
-                            </div>
-                            <h4>Drop files here to upload</h4>
+        {/* <Container fluid={true}>
+          <Breadcrumbs title="Connector" breadcrumbItem="Connector Upload" /> */}
+        <Row>
+          <Col className="col-12 col-md-6">
+            <Card>
+              <CardBody>
+                <Form className="dropzone">
+                  <Dropzone
+                    onDrop={(acceptedFiles) => {
+                      handleAcceptedFiles(acceptedFiles);
+                    }}
+                    style={{ width: "800px !important" }}
+                  >
+                    {({ getRootProps, getInputProps }) => (
+                      <div style={{ textAlign: "center" }}>
+                        <div
+                          className="dz-message needsclick"
+                          {...getRootProps()}
+                        >
+                          <input {...getInputProps()} />
+                          <div className="mb-3">
+                            <i className="display-4 text-muted mdi mdi-cloud-upload-outline"></i>
                           </div>
+                          <h4>Drop files here to upload</h4>
                         </div>
-                      )}
-                    </Dropzone>
-                    <div className="dropzone-previews mt-3" id="file-previews">
-                      {selectedFiles.map((f, i) => {
-                        return (
-                          <Card
-                            className="mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete"
-                            key={i + "-file"}
-                          >
-                            <div className="p-2">
-                              <Row className="align-items-center">
-                                <Col className="col-auto">
-                                  <img
-                                    data-dz-thumbnail=""
-                                    height="80"
-                                    className="avatar-sm rounded bg-light"
-                                    alt={f.name}
-                                    src={f.preview}
-                                  />
-                                </Col>
-                                <Col>
-                                  <Link
-                                    to="#"
-                                    className="text-muted font-weight-bold"
-                                  >
-                                    {f.name}
-                                  </Link>
-                                  <p className="mb-0">
-                                    <strong>{f.formattedSize}</strong>
-                                  </p>
-                                </Col>
-                              </Row>
-                            </div>
-                          </Card>
-                        );
-                      })}
-                    </div>
-                  </Form>
-
-                  <div className="text-center mt-4">
-                    <button
-                      type="button"
-                      disabled={!connectortData.length > 0}
-                      onClick={onSubmit}
-                      className="btn btn-primary "
-                    >
-                      Upload Connector
-                    </button>
+                      </div>
+                    )}
+                  </Dropzone>
+                  <div className="dropzone-previews mt-3" id="file-previews">
+                    {selectedFiles.map((f, i) => {
+                      return (
+                        <Card
+                          className="mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete"
+                          key={i + "-file"}
+                        >
+                          <div className="p-2">
+                            <Row className="align-items-center">
+                              <Col className="col-auto">
+                                <img
+                                  data-dz-thumbnail=""
+                                  height="80"
+                                  className="avatar-sm rounded bg-light"
+                                  alt={f.name}
+                                  src={f.preview}
+                                />
+                              </Col>
+                              <Col>
+                                <Link
+                                  to="#"
+                                  className="text-muted font-weight-bold"
+                                >
+                                  {f.name}
+                                </Link>
+                                <p className="mb-0">
+                                  <strong>{f.formattedSize}</strong>
+                                </p>
+                              </Col>
+                            </Row>
+                          </div>
+                        </Card>
+                      );
+                    })}
                   </div>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
+                </Form>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col className="col-12 col-md-3">
+            <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown} className="d-inline-block">
+              <DropdownToggle caret>
+                {selectedLanguage || "Select a language"}
+              </DropdownToggle>
+              <DropdownMenu>
+                {languageOptions.map((option) => (
+                  <DropdownItem key={option.value} onClick={() => handleLanguageSelect(option.value)}>
+                    {option.label}
+                  </DropdownItem>
+                ))}
+              </DropdownMenu>
+            </Dropdown>
+            <div className="d-line-block mt-4">
+              <button
+                type="button"
+                disabled={!connectortData.length > 0}
+                onClick={onSubmit}
+                className="btn btn-primary "
+              >
+                Upload Connector
+              </button>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="col-12 col-md-12">
+            <ConnectorList />
+          </Col>
+        </Row>
       </div>
-    </React.Fragment>
+    </React.Fragment >
   );
 };
 

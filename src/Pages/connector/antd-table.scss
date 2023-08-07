@@ -1,0 +1,23 @@
+/* Assuming your table component is rendered inside a container with a class "dark-table-container" */
+
+/* Add a dark background color to the table */
+.dark-table-container .ant-table {
+    background-color: #150808;
+}
+
+/* Style the table header */
+.dark-table-container .ant-table-thead>tr>th {
+    background-color: #202020;
+    color: #fff;
+}
+
+/* Style the table rows */
+.dark-table-container .ant-table-tbody>tr>td {
+    background-color: #252525;
+    color: #fff;
+}
+
+/* Style the selected row */
+.dark-table-container .ant-table-tbody>tr.ant-table-row-selected>td {
+    background-color: #6c6969;
+}

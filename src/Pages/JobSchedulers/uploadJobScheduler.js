@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Backdrop, CircularProgress } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Space, Table } from 'antd';
 import {
     Card,
     CardBody,
@@ -20,21 +21,20 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 import ApiEndPoints from "../../Network_call/ApiEndPoints";
 import ApiServices from "../../Network_call/apiservices";
 
+
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/javascript/javascript';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import ConnectorUploader from "../connector/Connector uploader/connectorUpload";
 
 const languageOptions = [
-    { value: "", label: "Select a language" },
     { value: "nodejs", label: "Node js" },
     { value: "python", label: "Python" },
     { value: "rust", label: "Rust" },
     { value: "Java", label: "Java" },
-    // Add more language options as needed
 ];
-
 
 const UploadJobSceduler = () => {
     const [scriptFile, setScriptFile] = useState(null);
@@ -105,6 +105,7 @@ const UploadJobSceduler = () => {
         }
     };
 
+
     return (
         <React.Fragment>
             <ToastContainer />
@@ -112,15 +113,12 @@ const UploadJobSceduler = () => {
                 <Container fluid={true}>
                     <Breadcrumbs title="Job Scheduler" breadcrumbItem="Upload Scheduler" />
                     <Row>
-                        <Col md={6}>
-                            {/* File upload */}
-                            <Label for="scriptFile">Upload Script File:</Label>
-                            <Input type="file" id="scriptFile" onChange={handleFileUpload} />
+                        <Col md={8}>
+                            <ConnectorUploader />
                         </Col>
-                        <Col md={6}>
-                            {/* Language selection */}
+                        <Col md={2}>
                             <Label>Select Language:</Label>
-                            <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
+                            <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown} className="d-inline-block">
                                 <DropdownToggle caret>
                                     {selectedLanguage || "Select a language"}
                                 </DropdownToggle>
@@ -134,54 +132,15 @@ const UploadJobSceduler = () => {
                             </Dropdown>
                         </Col>
                     </Row>
-                    <Row style={{ paddingTop: "30px" }}>
-                        <Col md={12}>
-                            {/* Code editor */}
-                            <Label for="code">Type your Code here! :</Label>
-                            <CodeMirror
-                                value={code}
-                                onBeforeChange={handleCodeChange}
-                                options={{
-                                    mode: 'javascript',
-                                    theme: 'material',
-                                    lineNumbers: true,
-                                }}
-                            />
-                        </Col>
-                    </Row>
-                    <Row style={{ paddingTop: "30px" }}>
-                        <Col md={6}>
-                            {/* Date range picker */}
-                            <Label for="startdate" style={{ paddingRight: "10px" }}>Schedule Date:</Label>
-                            <DatePicker
-                                selected={startDate}
-                                onChange={(date) => setStartDate(date)}
-                                selectsStart
-                                startDate={startDate}
-                                endDate={endDate}
-                                showTimeSelect
-                                timeFormat="HH:mm"
-                                timeIntervals={15}
-                                timeCaption="Time"
-                                dateFormat="MMMM d, yyyy HH:mm"
-                            />
-                        </Col>
-                        <Col md={6} className="d-flex justify-content-md-end mt-3 mt-md-0">
-                            {/* Save and schedule buttons */}
-                            <button type="button"
-                                className="btn btn-success btn-lg ms-2"
-                                style={{ height: "fit-content !important" }}
-                                onClick={handleSaveScript}>
-                                Save Script
-                            </button>
-                            <button type="button"
-                                className="btn btn-success btn-lg ms-2"
-                                style={{ height: "fit-content !important" }}
-                                onClick={handleScheduleJob}>
-                                Schedule Job
-                            </button>
-                        </Col>
-                    </Row>
+                    {/* <Row style={{ paddingTop: "30px" }}>
+                        <Table
+                            columns={columns}
+                            dataSource={data}
+                        />
+                    </Row> */}
+                    {/* <Col md={6} className="d-flex justify-content-md-end mt-3 mt-md-0">
+                    </Col> */}
+                    {/* </Row> */}
                 </Container>
             </div>
         </React.Fragment >

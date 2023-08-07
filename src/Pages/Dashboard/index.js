@@ -39,6 +39,7 @@ import DashboardTable from "../Tables/tableChart";
 import DashboardTableCluster from "../Tables/clousterTable";
 import { DashboardList, ReportList } from "../ulit/dashboardlist";
 import DeleteModal from "../../components/Common/DeleteModal";
+// import './dark-theme.css';
 const ResponsiveReactGridLayout = ReactGridLayout.WidthProvider(
   ReactGridLayout.Responsive
 );

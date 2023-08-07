@@ -13,6 +13,8 @@ import {
 	objectkey,
 	uperCase,
 } from "../ulit/commonFunction";
+import ConnectorList from "./connectorList";
+import ConnectorListTwo from "./new-table";
 
 const ConnectorSchedule = () => {
 	document.title = "scheduler | trend micro unity";
@@ -71,11 +73,33 @@ const ConnectorSchedule = () => {
 			payload,
 			ApiEndPoints.ConnectorConfigDetail
 		);
-		if (response.success) {
-			setConfig(response?.data?.isConnectorScheduled);
-			setConfigData(response?.data?.config);
-			setConnectorName(response?.data?.connectorBasePath);
+		var jsonData = {
+			"info": {
+				"dbName": "orion",
+				"connectorId": "64cad3f39ce2f6d71691047c"
+			},
+			"data": {
+				"config": {
+					"api_key": {
+						"type": "string",
+						"isPathArg": "false",
+						"position": "1"
+					},
+					"secret_key": {
+						"type": "string",
+						"isPathArg": "false",
+						"position": "2"
+					}
+				},
+				"connectorBasePath": "aws_inventory",
+				"connectorFileNameWithExtension": "inventry.py"
+			}
 		}
+		// if (response.success) {
+		setConfig(false);
+		setConfigData(jsonData.data.config);
+		setConnectorName(jsonData.data.connectorBasePath);
+		// }
 	};
 
 	// ############################################ scheduler repeat  ########################################
@@ -118,14 +142,14 @@ const ConnectorSchedule = () => {
 			payload,
 			ApiEndPoints.ConnectorScheduler
 		);
-		const parameterSave =
-			isSchedule === "true" || true
-				? await ApiServices(
-					"post",
-					parameterSavePayload,
-					ApiEndPoints.ConnectorParameterSave
-				)
-				: null;
+		// const parameterSave =
+		// 	isSchedule === "true" || true
+		// 		? await ApiServices(
+		// 			"post",
+		// 			parameterSavePayload,
+		// 			ApiEndPoints.ConnectorParameterSave
+		// 		)
+		// 		: null;
 		setConfigData([]);
 		setSchedulerData({
 			connectorId: "",
@@ -288,6 +312,12 @@ const ConnectorSchedule = () => {
 						</Col>
 					</Row>
 				)}
+				<Row>
+					<Col className="col-12 col-md-12">
+						{/* <ConnectorList /> */}
+						<ConnectorListTwo/>
+					</Col>
+				</Row>
 			</div>
 			<Backdrop
 				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}

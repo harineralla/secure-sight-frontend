@@ -104,7 +104,7 @@ const Login = (props) => {
 									<div>
 										<div className="text-center">
 											<Link to="/">
-												<img
+												{/* <img
 													src={logo}
 													alt=""
 													height="24"
@@ -115,16 +115,19 @@ const Login = (props) => {
 													alt=""
 													height="24"
 													className="auth-logo logo-light mx-auto"
-												/>
+												/> */}
+												<a href="/" className="navbar-brand mx-4 mt-4">
+													<h2 className="text-gradient"><i className="fa fa-shield-alt me-2"></i>Secure Sight</h2>
+												</a>
 											</Link>
 										</div>
-										<h4 className="font-size-18 text-muted mt-2 text-center">
+										{/* <h4 className="font-size-18 text-muted mt-2 text-center">
 											Secure Sight
-										</h4>
+										</h4> */}
 										<br />
-										<p className="mb-5 text-center">
+										{/* <p className="mb-5 text-center">
 											Sign up to continue to Upzet.
-										</p>
+										</p> */}
 										<Form
 											className="form-horizontal"
 											onSubmit={(e) => {

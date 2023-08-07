@@ -16,8 +16,8 @@ $sidebar-collapsed-width: 70px;
 $sidebar-width-sm: 160px;
 
 // Vertical Sidebar - Dark
-$sidebar-dark-bg: #1e1e1e; //252b3b
-// $sidebar-dark-bg: #252b3b; //252b3b
+// $sidebar-dark-bg: #1e1e1e; //252b3b
+$sidebar-dark-bg: #181c27; //252b3b
 $sidebar-dark-menu-item-color: #8590a5;
 $sidebar-dark-menu-sub-item-color: #8590a5;
 $sidebar-dark-menu-item-icon-color: #8590a5;
@@ -26,7 +26,7 @@ $sidebar-dark-menu-item-active-color: #ffffff;
 
 // Topbar - Deafult Light
 $header-height: 70px;
-$header-bg: #1e1e1e;
+$header-bg: #111633;
 $header-item-color: #919bae;
 
 // Topbar - Dark
@@ -38,8 +38,8 @@ $topbar-search-bg: #2b3244;
 
 // Footer
 $footer-height: 60px;
-$footer-bg: #1e1e1e;
-// $footer-bg: #212734;
+// $footer-bg: #1e1e1e;
+$footer-bg: #212734;
 $footer-color: #919bae;
 
 // Horizontal nav
@@ -85,8 +85,8 @@ $font-family-secondary: "Work Sans", sans-serif;
 // scss-docs-start gray-color-variables
 $white: #fff;
 $gray-100: #1e2125;
-$gray-200: #1e1e1e;
-// $gray-200: #252b3b;
+// $gray-200: #1e1e1e;
+$gray-200: #252b3b;
 $gray-300: #000;
 // $gray-300: #2d3448;
 $gray-400: #79859c;
@@ -1368,8 +1368,8 @@ $card-cap-bg: $gray-300;
 $card-cap-color: null;
 $card-height: null;
 $card-color: null;
-// $card-bg: #252b3b;
-$card-bg: #1e1e1e;
+$card-bg: #10121a;
+// $card-bg: #1e1e1e;
 
 $card-title-desc: $gray-400;
 

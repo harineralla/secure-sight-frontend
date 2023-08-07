@@ -18,189 +18,173 @@ import trendLogofull from "../../assets/images/logo/Images/TM_Logo_Primary_2c_re
 
 // Redux Store
 import {
-  showRightSidebarAction,
-  toggleLeftmenu,
-  changeSidebarType,
+	showRightSidebarAction,
+	toggleLeftmenu,
+	changeSidebarType,
 } from "../../store/actions";
 import ProfileMenu from "../../components/Common/TopbarDropdown/ProfileMenu";
 import AppsDropdown from "../../components/Common/TopbarDropdown/AppsDropdown";
+import "./logo.css"
 
 const Header = (props) => {
-  const [search, setsearch] = useState(false);
+	const [search, setsearch] = useState(false);
 
-  function toggleFullscreen() {
-    if (
-      !document.fullscreenElement &&
+	function toggleFullscreen() {
+		if (
+			!document.fullscreenElement &&
       /* alternative standard method */ !document.mozFullScreenElement &&
-      !document.webkitFullscreenElement
-    ) {
-      // current working methods
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-      } else if (document.documentElement.mozRequestFullScreen) {
-        document.documentElement.mozRequestFullScreen();
-      } else if (document.documentElement.webkitRequestFullscreen) {
-        document.documentElement.webkitRequestFullscreen(
-          Element.ALLOW_KEYBOARD_INPUT
-        );
-      }
-    } else {
-      if (document.cancelFullScreen) {
-        document.cancelFullScreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitCancelFullScreen) {
-        document.webkitCancelFullScreen();
-      }
-    }
-  }
+			!document.webkitFullscreenElement
+		) {
+			// current working methods
+			if (document.documentElement.requestFullscreen) {
+				document.documentElement.requestFullscreen();
+			} else if (document.documentElement.mozRequestFullScreen) {
+				document.documentElement.mozRequestFullScreen();
+			} else if (document.documentElement.webkitRequestFullscreen) {
+				document.documentElement.webkitRequestFullscreen(
+					Element.ALLOW_KEYBOARD_INPUT
+				);
+			}
+		} else {
+			if (document.cancelFullScreen) {
+				document.cancelFullScreen();
+			} else if (document.mozCancelFullScreen) {
+				document.mozCancelFullScreen();
+			} else if (document.webkitCancelFullScreen) {
+				document.webkitCancelFullScreen();
+			}
+		}
+	}
 
-  function tToggle() {
-    var body = document.body;
-    if (window.screen.width <= 998) {
-      body.classList.toggle("sidebar-enable");
-    } else {
-      body.classList.toggle("vertical-collpsed");
-      body.classList.toggle("sidebar-enable");
-    }
-  }
+	function tToggle() {
+		var body = document.body;
+		if (window.screen.width <= 998) {
+			body.classList.toggle("sidebar-enable");
+		} else {
+			body.classList.toggle("vertical-collpsed");
+			body.classList.toggle("sidebar-enable");
+		}
+	}
 
-  return (
-    <React.Fragment>
-      <header id="page-topbar">
-        <div className="navbar-header">
-          <div className="d-flex">
-            <div className="navbar-brand-box text-center">
-              <Link to="/" className="logo logo-dark">
-                <span className="logo-sm">
-                  <img src={trendLogo} alt="logo-sm-dark" height="32" />
-                </span>
-                <span className="logo-lg">
-                  <img src={trendLogofull} alt="logo-dark" height="34" />
-                </span>
-              </Link>
+	return (
+		<React.Fragment>
+			<header id="page-topbar">
+				<div className="navbar-header">
+					<div className="d-flex">
+						<a href="/" className="navbar-brand mx-4 mt-4">
+							<h2 className="text-gradient"><i className="fa fa-shield-alt me-2"></i>Secure Sight</h2>
+						</a>
+						<button
+							type="button"
+							className="btn btn-sm px-3 font-size-24 header-item waves-effect"
+							id="vertical-menu-btn"
+							onClick={() => {
+								tToggle();
+							}}
+						>
+							<i className="ri-menu-2-line align-middle"></i>
+						</button>
 
-              <Link to="/" className="logo logo-light">
-                <span className="logo-sm">
-                  <img src={trendLogo} alt="logo-sm-light" height="32" />
-                </span>
-                <span className="logo-lg">
-                  <img src={trendLogofull} alt="logo-light" height="34" />
-                </span>
-              </Link>
-            </div>
+						<form className="app-search d-none d-lg-block">
+							<div className="position-relative">
+								<input
+									type="text"
+									className="form-control"
+									placeholder="Search..."
+								/>
+								<span className="ri-search-line"></span>
+							</div>
+						</form>
+					</div>
 
-            <button
-              type="button"
-              className="btn btn-sm px-3 font-size-24 header-item waves-effect"
-              id="vertical-menu-btn"
-              onClick={() => {
-                tToggle();
-              }}
-            >
-              <i className="ri-menu-2-line align-middle"></i>
-            </button>
+					<div className="d-flex">
+						<div className="dropdown d-inline-block d-lg-none ms-2">
+							<button
+								onClick={() => {
+									setsearch(!search);
+								}}
+								type="button"
+								className="btn header-item noti-icon "
+								id="page-header-search-dropdown"
+							>
+								<i className="ri-search-line" />
+							</button>
+							<div
+								className={
+									search
+										? "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 show"
+										: "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+								}
+								aria-labelledby="page-header-search-dropdown"
+							>
+								<form className="p-3">
+									<div className="form-group m-0">
+										<div className="input-group">
+											<input
+												type="text"
+												className="form-control"
+												placeholder="Search ..."
+												aria-label="Recipient's username"
+											/>
+											<div className="input-group-append">
+												<button className="btn btn-primary" type="submit">
+													<i className="ri-search-line" />
+												</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
 
-            {/* <form className="app-search d-none d-lg-block">
-              <div className="position-relative">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Search..."
-                />
-                <span className="ri-search-line"></span>
-              </div>
-            </form> */}
-          </div>
+						{/* <LanguageDropdown /> */}
+						{/* <AppsDropdown /> */}
 
-          <div className="d-flex">
-            {/* <div className="dropdown d-inline-block d-lg-none ms-2">
-              <button
-                onClick={() => {
-                  setsearch(!search);
-                }}
-                type="button"
-                className="btn header-item noti-icon "
-                id="page-header-search-dropdown"
-              >
-                <i className="ri-search-line" />
-              </button>
-              <div
-                className={
-                  search
-                    ? "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 show"
-                    : "dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                }
-                aria-labelledby="page-header-search-dropdown"
-              >
-                <form className="p-3">
-                  <div className="form-group m-0">
-                    <div className="input-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Search ..."
-                        aria-label="Recipient's username"
-                      />
-                      <div className="input-group-append">
-                        <button className="btn btn-primary" type="submit">
-                          <i className="ri-search-line" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+						{/* <div className="dropdown d-none d-lg-inline-block ms-1">
+							<button
+								type="button"
+								onClick={() => {
+									toggleFullscreen();
+								}}
+								className="btn header-item noti-icon"
+								data-toggle="fullscreen"
+							>
+								<i className="ri-fullscreen-line" />
+							</button>
+						</div> */}
 
-            <LanguageDropdown />
-            <AppsDropdown />
+						{/* <NotificationDropdown /> */}
 
-            <div className="dropdown d-none d-lg-inline-block ms-1">
-              <button
-                type="button"
-                onClick={() => {
-                  toggleFullscreen();
-                }}
-                className="btn header-item noti-icon"
-                data-toggle="fullscreen"
-              >
-                <i className="ri-fullscreen-line" />
-              </button>
-            </div>
+						<ProfileMenu />
 
-            <NotificationDropdown /> */}
-
-            <ProfileMenu />
-
-            {/* <div
-              className="dropdown d-inline-block"
-              onClick={() => {
-                props.showRightSidebarAction(!props.showRightSidebar);
-              }}
-            >
-              <button
-                type="button"
-                className="btn header-item noti-icon right-bar-toggle waves-effect"
-              >
-                <i className="mdi mdi-cog"></i>
-              </button> */}
-            {/* </div> */}
-          </div>
-        </div>
-      </header>
-    </React.Fragment>
-  );
+						<div
+							className="dropdown d-inline-block"
+							onClick={() => {
+								props.showRightSidebarAction(!props.showRightSidebar);
+							}}
+						>
+							<button
+								type="button"
+								className="btn header-item noti-icon right-bar-toggle waves-effect"
+							>
+								<i className="mdi mdi-cog"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</header>
+		</React.Fragment>
+	);
 };
 
 const mapStatetoProps = (state) => {
-  const { layoutType, showRightSidebar, leftMenu, leftSideBarType } =
-    state.Layout;
-  return { layoutType, showRightSidebar, leftMenu, leftSideBarType };
+	const { layoutType, showRightSidebar, leftMenu, leftSideBarType } =
+		state.Layout;
+	return { layoutType, showRightSidebar, leftMenu, leftSideBarType };
 };
 
 export default connect(mapStatetoProps, {
-  showRightSidebarAction,
-  toggleLeftmenu,
-  changeSidebarType,
+	showRightSidebarAction,
+	toggleLeftmenu,
+	changeSidebarType,
 })(withTranslation()(Header));
