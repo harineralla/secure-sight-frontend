@@ -21,6 +21,7 @@ import {
 // Add the following import for Ant Design Table
 import { Table, Modal, DatePicker, Select } from "antd";
 import "./antd-table.scss";
+// import "../../css/antd/antd.css"
 
 const ConnectorListTwo = () => {
     document.title = "Connector List | Trend Micro Unity";
@@ -122,34 +123,34 @@ const ConnectorListTwo = () => {
     const RunScheduler = async (isSchedule) => {
         setOpenLoader(!openLoader);
 
-        let schedulConfig = objectkey(selectedConnectorConfig).map((i) => ({
-            [i]: selectedConnectorConfig[i]?.value,
+        let schedulConfig = objectkey(configData).map((i) => ({
+            [i]: configData[i]?.value,
         }));
-
         let payload = {
             info: {
                 dbName: userData.dbName,
-                connectorId: selectedConnector._id, // Use the selected connector's ID
+                connectorId: selectedConnector.key, // Use the selected connector's ID
                 isScheduled: JSON.parse(isSchedule),
             },
+            
             data: {
-                minute: selectedConnectorSchedulerData.minute,
+                minute: schedulerData.minute,
                 hour:
-                    selectedConnectorSchedulerData.repeat === "minute"
+                schedulerData.repeat === "minute"
                         ? 0
-                        : selectedConnectorSchedulerData.hour,
+                        : schedulerData.hour,
                 day:
-                    selectedConnectorSchedulerData.repeat === "hourly" ||
-                        selectedConnectorSchedulerData.repeat === "minute"
+                schedulerData.repeat === "hourly" ||
+                schedulerData.repeat === "minute"
                         ? 0
-                        : selectedConnectorSchedulerData.weekDay,
+                        : schedulerData.weekDay,
                 date:
-                    selectedConnectorSchedulerData.repeat === "hourly" ||
-                        selectedConnectorSchedulerData.repeat === "minute"
+                schedulerData.repeat === "hourly" ||
+                schedulerData.repeat === "minute"
                         ? 0
-                        : selectedConnectorSchedulerData.monthDay,
+                        : schedulerData.monthDay,
                 inventory: uperCase(connectorName),
-                repeat: selectedConnectorSchedulerData.repeat,
+                repeat: schedulerData.repeat,
                 config: Object.assign({}, ...schedulConfig),
             },
         };
