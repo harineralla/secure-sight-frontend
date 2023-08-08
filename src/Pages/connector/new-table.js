@@ -102,7 +102,7 @@ const ConnectorListTwo = () => {
         //     payload,
         //     ApiEndPoints.ConnectorConfigDetail
         // );
-        var connectorConfigurationDetail = connectorList.filter((record) => record._id = item)
+        var connectorConfigurationDetail = connectorList.filter((record) => record._id == item)
         var jsonData = {
             info: { dbName: userData.dbName, connectorId: item },
             data: {
