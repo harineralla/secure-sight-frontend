@@ -127,8 +127,8 @@ const SidebarData = [
 		url: "/connector",
 		bgcolor: "bg-primary",
 		subItem: [
-			{ sublabel: "Upload", link: "/connector-upload" },
-			{ sublabel: "List", link: "/connector-list" },
+			{ sublabel: "Upload & Config", link: "/connector-upload" },
+			// { sublabel: "List", link: "/connector-list" },
 			{ sublabel: "Schedule", link: "/connector-schedule" },
 			// { sublabel: "Index Delete", link: "/connector-index-delete" },
 		],

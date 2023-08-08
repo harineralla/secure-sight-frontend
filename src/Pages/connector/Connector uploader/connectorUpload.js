@@ -271,7 +271,7 @@ const ConnectorUploader = () => {
         {/* <Container fluid={true}>
           <Breadcrumbs title="Connector" breadcrumbItem="Connector Upload" /> */}
         <Row>
-          <Col className="col-12 col-md-6">
+          <Col className="col-12 col-md-8">
             <Card>
               <CardBody>
                 <Form className="dropzone">
@@ -279,7 +279,7 @@ const ConnectorUploader = () => {
                     onDrop={(acceptedFiles) => {
                       handleAcceptedFiles(acceptedFiles);
                     }}
-                    style={{ width: "800px !important" }}
+                    style={{ width: "700px !important" }}
                   >
                     {({ getRootProps, getInputProps }) => (
                       <div style={{ textAlign: "center" }}>

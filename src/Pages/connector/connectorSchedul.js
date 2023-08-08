@@ -178,7 +178,7 @@ const ConnectorSchedule = () => {
 			<div className="page-content">
 				<ToastContainer />
 				<Breadcrumbs title="Schedule" breadcrumbItem="Connector" />
-				<Row>
+				{/* <Row>
 					<Col xl={12}>
 						<Card>
 							<CardBody>
@@ -311,7 +311,7 @@ const ConnectorSchedule = () => {
 							</Card>
 						</Col>
 					</Row>
-				)}
+				)} */}
 				<Row>
 					<Col className="col-12 col-md-12">
 						{/* <ConnectorList /> */}
