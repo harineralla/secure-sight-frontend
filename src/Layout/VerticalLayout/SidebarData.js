@@ -134,20 +134,6 @@ const SidebarData = [
 		],
 	},
 	{
-		label: "Job Scheduler",
-		isMainMenu: true,
-	},
-	{
-		label: "Job Scheduler",
-		url: "/job-scheduler",
-		bgcolor: "bg-primary",
-		icon: "ri-calendar-2-fill",
-		subItem: [
-			{ sublabel: "Upload Connector", link: "/upload" },
-			{ sublabel: "Schedule Connector", link: "/schedule" }
-		]
-	},
-	{
 		label: "CSV Data",
 		isMainMenu: true,
 	},

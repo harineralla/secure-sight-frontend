@@ -315,7 +315,7 @@ const ConnectorSchedule = () => {
 				<Row>
 					<Col className="col-12 col-md-12">
 						{/* <ConnectorList /> */}
-						<ConnectorListTwo/>
+						<ConnectorListTwo />
 					</Col>
 				</Row>
 			</div>

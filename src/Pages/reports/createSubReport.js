@@ -70,6 +70,7 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
       ApiEndPoints.ElasticIndexList
     );
     if (response) {
+      // debugger
       setIndexList(response);
     }
     setReportTitle("");

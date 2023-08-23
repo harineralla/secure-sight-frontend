@@ -50,8 +50,6 @@ import SmartChecksDashboard from "../Pages/Dashboard/dashboard/smartChecks";
 import TenableReport from "../Pages/reports/reports/tenable";
 import ScanDetails from "../Pages/reports/reports/scanDetails";
 import RegistriesDetails from "../Pages/reports/reports/registriesDetail";
-import UploadJobSceduler from "../Pages/JobSchedulers/uploadJobScheduler";
-import ScheduleJobScheduler from "../Pages/JobSchedulers/schedule-job";
 
 const authProtectedRoutes = [
 	//dashboard
@@ -140,9 +138,6 @@ const authProtectedRoutes = [
 	{ path: "/help", component: <Help /> },
 	{ path: "/help/:id", component: <Help /> },
 	{ path: "/", component: <CreateDashboard /> },
-
-	{ path: "/upload", component: <UploadJobSceduler /> },
-	{ path: "/schedule", component: <ScheduleJobScheduler/> }
 ];
 
 const publicRoutes = [
