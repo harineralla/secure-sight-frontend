@@ -39,7 +39,7 @@ $topbar-search-bg: #2b3244;
 // Footer
 $footer-height: 60px;
 // $footer-bg: #1e1e1e;
-$footer-bg: #212734;
+$footer-bg: #191C24;
 $footer-color: #919bae;
 
 // Horizontal nav
@@ -771,8 +771,8 @@ $table-cell-padding-x-sm: 0.3rem;
 
 $table-cell-vertical-align: top;
 
-$table-color: $body-color;
-$table-bg: null;
+$table-color: #6C7293;
+$table-bg: #191C24;
 $table-accent-bg: transparent;
 
 $table-th-font-weight: null;
@@ -785,13 +785,13 @@ $table-active-color: $table-color;
 $table-active-bg-factor: 0.1;
 $table-active-bg: $table-hover-bg;
 
-$table-hover-color: $table-color;
+$table-hover-color: red;
 $table-hover-bg-factor: 0.075;
 $table-hover-bg: rgba($gray-500, 0.05);
 
 $table-border-factor: 0.1;
 $table-border-width: $border-width;
-$table-border-color: $border-color;
+$table-border-color: $white ;
 
 $table-striped-order: odd;
 $table-group-separator-color: $border-color;

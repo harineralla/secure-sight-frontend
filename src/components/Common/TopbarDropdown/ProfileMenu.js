@@ -61,7 +61,7 @@ const ProfileMenu = (props) => {
 							<div className="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
 						</div>
 						<div className="ms-3">
-							<h6 className="mb-0">Admin One</h6>
+							<h6 className="mb-0 color">Admin One</h6>
 							<span>Admin</span>
 						</div>
 						<span className="d-none d-xl-inline-block ms-2 me-2">{username}</span>

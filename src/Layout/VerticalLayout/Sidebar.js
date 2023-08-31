@@ -122,7 +122,7 @@ const Sidebar = (props) => {
 	}
 	return (
 		<React.Fragment>
-			<div className="vertical-menu">
+			<div className="vertical-menu" style={{backgroundColor: "#191C24"}}>
 				<SimpleBar className="h-100" ref={ref}>
 					<div id="sidebar-menu">
 						<ul className="metismenu list-unstyled" id="side-menu-item">
@@ -131,17 +131,18 @@ const Sidebar = (props) => {
 									{item.isMainMenu ? (
 										<li className="menu-title">{props.t(item.label)}</li>
 									) : (
-										<li key={key}>
+										<li key={key} >
 											<Link
 												to={item.url ? item.url : "/#"}
-												className={
-													(item.issubMenubadge || item.isHasArrow)
+												className={` sidebarHighlight
+													${((item.issubMenubadge || item.isHasArrow)
 														? " "
-														: "has-arrow"
-												}
+														: "has-arrow") }
+													
+												`}
 											>
 												<i
-													className={item.icon}
+													className={` ${item.icon} sidebarHighlight`}
 													style={{ marginRight: "5px" }}
 												></i>
 												{item.issubMenubadge && (
@@ -157,19 +158,19 @@ const Sidebar = (props) => {
 												<span>{props.t(item.label)}</span>
 											</Link>
 											{item.subItem && (
-												<ul className="sub-menu">
+												<ul className="sub-menu " style={{paddingTop : 10}}>
 													{item.subItem.map((item, key) => (
 														<li key={key}>
 															<Link
 																to={item.link}
-																className={
-																	item.subMenu && "has-arrow waves-effect"
-																}
+																className={` sub-menu-higlight
+																	${item.subMenu && "has-arrow waves-effect"}
+																`}
 															>
 																{props.t(item.sublabel)}
 															</Link>
 															{item.subMenu && (
-																<ul className="sub-menu">
+																<ul className="sub-menu" >
 																	{item.subMenu.map((item, key) => (
 																		<li key={key}>
 																			<Link to="#">

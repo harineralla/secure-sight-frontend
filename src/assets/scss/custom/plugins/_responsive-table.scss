@@ -12,7 +12,6 @@
   }
   .btn-group{
     .btn-default {
-      background-color: $light;
       color: $dark;
       border: 1px solid darken($light, 2%);
       &.btn-primary {
@@ -139,3 +138,24 @@ body[data-layout="horizontal"] {
     }
   }
 }
+
+
+.ant-table-tbody > tr.ant-table-row:hover > td,
+.ant-table-tbody > tr > td.ant-table-cell-row-hover {
+  color: red !important;
+}
+.dark-table-container .ant-table-thead > tr > th {
+  background-color: #191C24 !important;
+  color : #6C7293 !important;
+}
+
+.dark-table-container .ant-table-tbody > tr > td {
+  background-color: #191C24 !important;
+  color :#6C7293 !important;
+}
+
+.dark-table-container .ant-table-thead > tr > td.ant-table-cell.ant-table-selection-column {
+  background-color: #191C24 !important;
+  color :#6C7293 !important;
+}
+
