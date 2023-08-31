@@ -1,4 +1,4 @@
-import { Download } from "@mui/icons-material";
+import { ConstructionOutlined, Download } from "@mui/icons-material";
 import { Backdrop, Box, CircularProgress, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
@@ -42,6 +42,9 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
   const [dataModal, setDataModal] = useState(false);
   const [tableData, setTableData] = useState([]);
   const [hour, setHour] = useState(0);
+  const [selectedColumns, setSelectedColumns] = useState([]);
+  const [filteredTableData, setFilteredData] = useState([]);
+  const [updatedElasticData, setElasticData] = useState([]);
   const [userData, setUserData] = React.useState({
     email: "",
     dbName: "",
@@ -58,6 +61,25 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
     connectorData(userInfo.dbName);
   }, []);
 
+  // ############################################ get elastic data ########################################
+  useEffect(() => {
+    var elasticIndex = tableData.length > 0 && tableData[0].hasOwnProperty("_index") ? tableData[0]._index : null;
+    if (elasticIndex) {
+      GetElasticData(elasticIndex);
+    }
+  }, [tableData]);
+
+  const GetElasticData = async ({ elasticIndex }) => {
+    let payload = {
+      index: elasticIndex
+    };
+    const response = await ApiServices(
+      "post",
+      payload,
+      ApiEndPoints.SearchData
+    );
+    setElasticData(response);
+  }
   // ############################################ get report data ########################################
   const HandleConnectorChange = async (event) => {
     setOpenLoader(true);
@@ -70,7 +92,6 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
       ApiEndPoints.ElasticIndexList
     );
     if (response) {
-      // debugger
       setIndexList(response);
     }
     setReportTitle("");
@@ -158,13 +179,15 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
   // ############################################ handek checkbox ########################################
 
   const handleCheckboxChange = (e) => {
+    // const columnName = allReplace(e.target.value, { "_source.": "" });
+    const columnName = e.target.value;
+
     if (e.target.checked) {
-      setCheckbox((prev) => [
-        ...prev,
-        allReplace(e.target.value, { "_source.": "" }),
-      ]);
+      setSelectedColumns((prevColumns) => [...prevColumns, columnName]);
     } else {
-      setCheckbox(checkbox.filter((item) => item !== e.target.value));
+      setSelectedColumns((prevColumns) =>
+        prevColumns.filter((item) => item !== columnName)
+      );
     }
   };
 
@@ -211,6 +234,7 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
       filterColumnValue ? payloadsearch : payload,
       ApiEndPoints.SearchData
     );
+    console.log("before filtering the columns response ", response)
     toast(response.msg);
     setTableData(response);
     setOpenLoader(false);
@@ -219,8 +243,32 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
   };
   // ############################################ post report data ########################################
 
-  const ceateReport = async () => {
+  const createReport = async () => {
     setOpenLoader(true);
+    var firstRecord = tableData.length > 0 ? Array(1).fill(tableData[0]) : [];
+    const filteredData = (tableData.length > 0 && firstRecord.map(row => {
+      const newRow = {};
+
+      selectedColumns.forEach(column => {
+        const columnParts = column.split('.');
+
+        if (columnParts.length === 1) {
+          newRow[column] = row[column];
+        } else {
+          const parentProp = columnParts[0];
+          const childProp = columnParts[1];
+
+          if (!newRow[parentProp]) {
+            newRow[parentProp] = {};
+          }
+
+          newRow[parentProp][childProp] = row[parentProp][childProp];
+        }
+      });
+
+      return newRow;
+    }));
+    setFilteredData(filteredData);
     let payload = {
       info: {
         dbName: userData.dbName,
@@ -230,7 +278,7 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
         column: checkbox,
         headerName: checkbox,
       },
-      data: { data: tableData, column: checkbox },
+      data: { data: filteredData, column: checkbox },
     };
     const response = await ApiServices(
       "post",
@@ -242,8 +290,10 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
     setCheckbox([]);
     setReportTitle("");
     setOpenLoader(false);
+    setTableData(filteredData);
   };
-  const ImportCSVData = () => {};
+  // console.log("table data after filtering out the columns", tableData)
+  const ImportCSVData = () => { };
   const onFileLoad = (data) => {
     setTableData(data);
     setDataModal(false);
@@ -273,7 +323,7 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
                         className="form-select"
                         id="floatingSelectGrid"
                         aria-label="Floating label select example"
-                        onChange={HandleConnectorChange}
+                        onChange={(e) => { HandleConnectorChange(e) }}
                       >
                         <option value="">Select Report</option>
                         {connectorList &&
@@ -356,7 +406,7 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
                           <h4 className="mb-0 pb-0 font-size-18">
                             Select Columns{" "}
                           </h4>
-                          <p>Select Columns for Create the new Report</p>
+                          <p>Select Columns to Create the new Report</p>
                           <ul
                             className="message-list mb-0 maxh-3"
                             style={{
@@ -374,7 +424,8 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
                                         type="checkbox"
                                         id={i}
                                         value={i}
-                                        onChange={handleCheckboxChange}
+                                        // checked={selectedColumns.includes(allReplace(i, { "_source.": "" }))}
+                                        onChange={(e) => { handleCheckboxChange(e) }}
                                       />
                                       <label
                                         htmlFor={i}
@@ -451,7 +502,7 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
                           }
                           breadcrumbItem={
                             <button
-                              onClick={ceateReport}
+                              onClick={createReport}
                               className="btn btn-primary w-md"
                             >
                               Create Report
@@ -490,7 +541,7 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
                   }
                 />
                 <MaterialTable
-                  data={tableData}
+                  data={updatedElasticData}
                   columns={columns}
                   hidecolumn={hidecolumn}
                 />
