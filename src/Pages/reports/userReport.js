@@ -39,7 +39,6 @@ const UserReport = ({ data, userData, report_id }) => {
 
   useEffect(() => {
     const GetElasticData = async (elasticIndex) => {
-      // debugger
         let payload = {
           index: elasticIndex
         };
@@ -121,7 +120,7 @@ const UserReport = ({ data, userData, report_id }) => {
             <MaterialTable
               data={testdata.length > 0 ? testdata : data.data}
               columns={columns}
-              // hidecolumn={hidecolumn}
+              hidecolumn={hidecolumn}
               // enableFilterMatchHighlighting
               // enableRowSelection
               // enableColumnResizing
@@ -129,7 +128,7 @@ const UserReport = ({ data, userData, report_id }) => {
               // enableHiding
               // enableRowVirtualization
               // columnResizeMode="onChange"
-              // enableColumnOrdering
+              enableColumnOrdering
               enablePagination
               enableBottomToolbar
               enableHiding
@@ -141,7 +140,6 @@ const UserReport = ({ data, userData, report_id }) => {
               enableRowVirtualization
               enableColumnResizing
               columnResizeMode="onChange"
-              enableColumnOrdering
               manualSorting
               initialState={{ columnVisibility: hidecolumn }}
             />
