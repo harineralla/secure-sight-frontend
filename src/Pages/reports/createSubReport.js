@@ -44,7 +44,6 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
   const [hour, setHour] = useState(0);
   const [selectedColumns, setSelectedColumns] = useState([]);
   const [filteredTableData, setFilteredData] = useState([]);
-  const [updatedElasticData, setElasticData] = useState([]);
   const [userData, setUserData] = React.useState({
     email: "",
     dbName: "",
@@ -61,25 +60,6 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
     connectorData(userInfo.dbName);
   }, []);
 
-  // ############################################ get elastic data ########################################
-  useEffect(() => {
-    var elasticIndex = tableData.length > 0 && tableData[0].hasOwnProperty("_index") ? tableData[0]._index : null;
-    if (elasticIndex) {
-      GetElasticData(elasticIndex);
-    }
-  }, [tableData]);
-
-  const GetElasticData = async ({ elasticIndex }) => {
-    let payload = {
-      index: elasticIndex
-    };
-    const response = await ApiServices(
-      "post",
-      payload,
-      ApiEndPoints.SearchData
-    );
-    setElasticData(response);
-  }
   // ############################################ get report data ########################################
   const HandleConnectorChange = async (event) => {
     setOpenLoader(true);
@@ -541,7 +521,7 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
                   }
                 />
                 <MaterialTable
-                  data={updatedElasticData}
+                  data={tableData}
                   columns={columns}
                   hidecolumn={hidecolumn}
                 />
