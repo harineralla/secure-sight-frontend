@@ -36,34 +36,7 @@ const UserReport = ({ data, userData, report_id }) => {
   const [reportTitle, setReportTitle] = useState("");
   const [testdata, setTestdata] = useState([])
   const keys = Array.from(deepKeys(data && data?.data[0]));
-  // const GetElasticData = async (elasticIndex) => {
-  //   // debugger
-  //     let payload = {
-  //       index: elasticIndex
-  //     };
-  //     const response = await ApiServices(
-  //       "post",
-  //       payload,
-  //       ApiEndPoints.SearchData
-  //     );
-  //     setTestdata(response);
 
-  //     // var returndata = response.then((x) => {
-  //     //   debugger
-  //     //   setupdateddata(x)
-  //     // })
-  //     // debugger
-  //     // return response
-  //   }
-  // if(data!=undefined){
-  //   var data = data.data.length > 0 ? [data.data[0]] : {}
-  //   var index = data[0].hasOwnProperty("_index") ? data[0]["_index"] : null;
-  //   var updateddata = []
-  //   if(index != null){
-  //     GetElasticData(index);
-  //   }
-  // }
-  debugger
   useEffect(() => {
     const GetElasticData = async (elasticIndex) => {
       // debugger
@@ -75,33 +48,15 @@ const UserReport = ({ data, userData, report_id }) => {
           payload,
           ApiEndPoints.SearchData
         );
-        debugger
         setTestdata(response);
-  
-        // var returndata = response.then((x) => {
-        //   debugger
-        //   setupdateddata(x)
-        // })
-        // debugger
-        // return response
       }
-    var x = data;
-    debugger
-    // if(data!=undefined){
-    //   var data = data.length > 0 ? data[0] : {}
       var index = data.hasOwnProperty("data") && data["data"].length > 0 && data["data"][0].hasOwnProperty("_index") ? data["data"][0]["_index"] : null;
-      debugger
-      var updateddata = []
+
       if(index != null){
         GetElasticData(index)
       }
     // }
   }, [data])
-
-  useEffect(() => {
-    let x = testdata;
-    debugger
-  }, [testdata])
 
   
   const columns = data?.column
@@ -121,8 +76,7 @@ const UserReport = ({ data, userData, report_id }) => {
   const onchange = (e) => {
     setReportTitle(e.target.value);
   };
-  var x = testdata
-debugger
+
   const UpdateReportTitle = async () => {
     let payload = {
       info: {
