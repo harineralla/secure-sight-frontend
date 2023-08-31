@@ -69,14 +69,14 @@ const Header = (props) => {
 	return (
 		<React.Fragment>
 			<header id="page-topbar">
-				<div className="navbar-header">
-					<div className="d-flex">
+				<div className="navbar-header" style={{backgroundColor: "#191C24"}}>
+					<div className="d-flex" >
 						<a href="/" className="navbar-brand mx-4 mt-4">
 							<h2 className="text-gradient"><i className="fa fa-shield-alt me-2"></i>Secure Sight</h2>
 						</a>
 						<button
 							type="button"
-							className="btn btn-sm px-3 font-size-24 header-item waves-effect"
+							className="btn btn-sm px-3 font-size-24 header-item waves-effect paddingLeft"
 							id="vertical-menu-btn"
 							onClick={() => {
 								tToggle();
@@ -85,12 +85,13 @@ const Header = (props) => {
 							<i className="ri-menu-2-line align-middle"></i>
 						</button>
 
-						<form className="app-search d-none d-lg-block">
+						<form className="app-search d-none d-lg-block" style={{ color: "#191C24 !important"}}>
 							<div className="position-relative">
 								<input
 									type="text"
 									className="form-control"
 									placeholder="Search..."
+									style={{backgroundColor : "#000000"}}
 								/>
 								<span className="ri-search-line"></span>
 							</div>

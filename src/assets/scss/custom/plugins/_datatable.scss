@@ -251,3 +251,26 @@ table {
     }
   }
 }
+
+div.table-responsive > table.table > thead > tr
+{
+  position: relative;
+  >th {
+    position: relative;
+  }
+  > th:last-child::before{
+    position: unset;
+  }
+  > th::before  {
+      position: absolute;
+      top: 50%;
+      inset-inline-end: 0;
+      width: 1px;
+      height: 1.6em;
+      background-color: #f0f0f0;
+      transform: translateY(-50%);
+      transition: background-color 0.2s;
+      content: "";
+    }
+  
+}
