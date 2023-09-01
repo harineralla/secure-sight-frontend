@@ -51,12 +51,35 @@ const MaterialTable = ({
         enableColumnOrdering
         initialState={{ columnVisibility: hidecolumn }}
         enableExpanding={enableExpanding}
+        muiTableHeadCellProps={{
+          sx:{
+            bgcolor: "#191C24",    
+            color : '#6C7293',   
+            position : 'realtive',
+            ".css-tqueyn-MuiButtonBase-root-MuiIconButton-root, .css-1vo6kym-MuiButtonBase-root-MuiIconButton-root, .css-hv6h5i-MuiButtonBase-root-MuiCheckbox-root" : {
+              color : '#6C7293 !important',
+            },
+            ".css-e4az1k-MuiDivider-root " : {
+              borderColor : '#6C7293 !important',
+
+            },
+          }
+        }}
         muiTableBodyProps={{
           sx: {
             //stripe the rows, make odd rows a darker color
-            "& tr:nth-of-type(odd)": {
-              backgroundColor: "#fff",
+            color : '#6C7293',  
+            "& tr > td": {
+              bgcolor: "#191C24",    
+              color : '#6C7293 ',  
             },
+            "& tr:hover > td": {
+              color: "red", 
+              bgcolor: "#191C24",     
+            },
+            ".css-hv6h5i-MuiButtonBase-root-MuiCheckbox-root" :{
+              color : '#6C7293 !important',
+            }
           },
         }}
         renderTopToolbarCustomActions={({ table }) => {
