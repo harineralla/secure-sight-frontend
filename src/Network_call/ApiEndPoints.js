@@ -1,8 +1,8 @@
 const APPConfig = {
   // API_URL: "http://54.162.2.199:5001/api",
   // API_URL: "http://10.179.25.131:5001/api",
-  // API_URL: "http://34.29.193.134:5001/api",
-  API_URL: "http://localhost:5000/api"
+  API_URL: "http://34.69.85.115:5000/api",
+  // API_URL: "http://localhost:5000/api"
 };
 
 const ApiEndPoints = {
