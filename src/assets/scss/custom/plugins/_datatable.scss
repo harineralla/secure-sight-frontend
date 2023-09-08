@@ -274,3 +274,12 @@ div.table-responsive > table.table > thead > tr
     }
   
 }
+
+// MaterialReactTable header and footer css 
+
+.css-1omuo8w-MuiToolbar-root, .css-g2tram-MuiToolbar-root{
+  background-color: #191C24 !important;
+}
+.css-78trlr-MuiButtonBase-root-MuiIconButton-root, .css-16253fi-MuiTablePagination-root, .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon, .css-zylse7-MuiButtonBase-root-MuiIconButton-root.Mui-disabled{
+  color : #6C7293 !important; 
+}

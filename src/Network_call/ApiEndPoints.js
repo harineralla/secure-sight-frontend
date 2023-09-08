@@ -67,6 +67,7 @@ const ApiEndPoints = {
   ContainerRuntimeVulnerabilityView: `${APPConfig.API_URL}/elastic/container-runtime-vulnerability-view`,
   SmartScanDetail: `${APPConfig.API_URL}/elastic/smart-scan-detail`,
   RegistriesList: `${APPConfig.API_URL}/elastic/smart-check-registries-list`,
+  ChangeLanguage : `${APPConfig.API_URL}/connector/change-language`,
 };
 
 export default ApiEndPoints;
