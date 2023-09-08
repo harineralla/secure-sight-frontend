@@ -30,4 +30,14 @@ const ReportList = async ({ dbName, userId, reload }) => {
     window.location.reload();
   }
 };
-export { DashboardList, ReportList };
+
+const setSelectedLanguage = async ({language}) => {
+  let payload = { language: language };
+  const response = await ApiServices(
+    "post",
+    payload,
+    ApiEndPoints.ChangeLanguage
+  );
+
+}
+export { DashboardList, ReportList, setSelectedLanguage };

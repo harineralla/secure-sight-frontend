@@ -27,6 +27,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import ConnectorList from "../connectorList";
 import axios from "axios";
+import { setSelectedLanguage,  } from "../../ulit/dashboardlist";
+
 
 
 const chunkSize = 10000 * 1000;
@@ -164,6 +166,19 @@ const ConnectorUploader = () => {
 	}, [state.lastUploadedFileIndex]);
 
 	useEffect(() => {
+		if(selectedLanguage === ''){
+			return;
+		}
+		// Uncomment the below "setSelectedLanguage"  inorder to send an APi call to set the laguage in the back-end
+		// and Just for your info, There is no api on the back-end for this
+
+		// setSelectedLanguage({
+		// 	language: selectedLanguage,
+		// });
+
+	}, [selectedLanguage]);
+
+	useEffect(() => {
 		if (state.files.length > 0) {
 			if (state.currentFileIndex === null) {
 				setState((prevState) => ({
@@ -259,7 +274,7 @@ const ConnectorUploader = () => {
 	};
 
 	const handleLanguageSelect = (event) => {
-		setSelectedLanguage(event.target.value);
+		setSelectedLanguage(event);
 	};
 
 
