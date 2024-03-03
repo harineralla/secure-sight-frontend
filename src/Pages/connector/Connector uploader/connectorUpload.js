@@ -283,103 +283,104 @@ const ConnectorUploader = () => {
 			{/* <ToastContainer /> */}
 
 			<div className="page-content">
-				{/* <Container fluid={true}>
-          <Breadcrumbs title="Connector" breadcrumbItem="Connector Upload" /> */}
-				<Row>
-					<Col className="col-12 col-md-8">
-						<Card>
-							<CardBody>
-								<Form className="dropzone">
-									<Dropzone
-										onDrop={(acceptedFiles) => {
-											handleAcceptedFiles(acceptedFiles);
-										}}
-										style={{ width: "700px !important" }}
-									>
-										{({ getRootProps, getInputProps }) => (
-											<div style={{ textAlign: "center" }}>
-												<div
-													className="dz-message needsclick"
-													{...getRootProps()}
-												>
-													<input {...getInputProps()} />
-													<div className="mb-3">
-														<i className="display-4 text-muted mdi mdi-cloud-upload-outline"></i>
+				<Container fluid={true}>
+					<Breadcrumbs title="Connector" breadcrumbItem="Connector Upload" />
+					<Row>
+						<Col className="col-12 col-md-8">
+							<Card>
+								<CardBody>
+									<Form className="dropzone">
+										<Dropzone
+											onDrop={(acceptedFiles) => {
+												handleAcceptedFiles(acceptedFiles);
+											}}
+											style={{ width: "700px !important" }}
+										>
+											{({ getRootProps, getInputProps }) => (
+												<div style={{ textAlign: "center" }}>
+													<div
+														className="dz-message needsclick"
+														{...getRootProps()}
+													>
+														<input {...getInputProps()} />
+														<div className="mb-3">
+															<i className="display-4 text-muted mdi mdi-cloud-upload-outline"></i>
+														</div>
+														<h4>Drop files here to upload</h4>
 													</div>
-													<h4>Drop files here to upload</h4>
 												</div>
-											</div>
-										)}
-									</Dropzone>
-									<div className="dropzone-previews mt-3" id="file-previews">
-										{selectedFiles.map((f, i) => {
-											return (
-												<Card
-													className="mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete"
-													key={i + "-file"}
-												>
-													<div className="p-2">
-														<Row className="align-items-center">
-															<Col className="col-auto">
-																<img
-																	data-dz-thumbnail=""
-																	height="80"
-																	className="avatar-sm rounded bg-light"
-																	alt={f.name}
-																	src={f.preview}
-																/>
-															</Col>
-															<Col>
-																<Link
-																	to="#"
-																	className="text-muted font-weight-bold"
-																>
-																	{f.name}
-																</Link>
-																<p className="mb-0">
-																	<strong>{f.formattedSize}</strong>
-																</p>
-															</Col>
-														</Row>
-													</div>
-												</Card>
-											);
-										})}
-									</div>
-								</Form>
-							</CardBody>
-						</Card>
-					</Col>
-					<Col className="col-12 col-md-3">
-						<Dropdown isOpen={dropdownOpen} toggle={toggleDropdown} className="d-inline-block">
-							<DropdownToggle caret>
-								{selectedLanguage || "Select a language"}
-							</DropdownToggle>
-							<DropdownMenu>
-								{languageOptions.map((option) => (
-									<DropdownItem key={option.value} onClick={() => handleLanguageSelect(option.value)}>
-										{option.label}
-									</DropdownItem>
-								))}
-							</DropdownMenu>
-						</Dropdown>
-						<div className="d-line-block mt-4">
-							<button
-								type="button"
-								disabled={!connectortData.length > 0}
-								onClick={onSubmit}
-								className="btn btn-primary "
-							>
-								Upload Connector
-							</button>
-						</div>
-					</Col>
-				</Row>
-				<Row>
-					<Col className="col-12 col-md-12">
-						<ConnectorList />
-					</Col>
-				</Row>
+											)}
+										</Dropzone>
+										<div className="dropzone-previews mt-3" id="file-previews">
+											{selectedFiles.map((f, i) => {
+												return (
+													<Card
+														className="mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete"
+														key={i + "-file"}
+													>
+														<div className="p-2">
+															<Row className="align-items-center">
+																<Col className="col-auto">
+																	<img
+																		data-dz-thumbnail=""
+																		height="80"
+																		className="avatar-sm rounded bg-light"
+																		alt={f.name}
+																		src={f.preview}
+																	/>
+																</Col>
+																<Col>
+																	<Link
+																		to="#"
+																		className="text-muted font-weight-bold"
+																	>
+																		{f.name}
+																	</Link>
+																	<p className="mb-0">
+																		<strong>{f.formattedSize}</strong>
+																	</p>
+																</Col>
+															</Row>
+														</div>
+													</Card>
+												);
+											})}
+										</div>
+									</Form>
+								</CardBody>
+							</Card>
+						</Col>
+						<Col className="col-12 col-md-3">
+							<Dropdown isOpen={dropdownOpen} toggle={toggleDropdown} className="d-inline-block">
+								<DropdownToggle caret>
+									{selectedLanguage || "Select a language"}
+								</DropdownToggle>
+								<DropdownMenu>
+									{languageOptions.map((option) => (
+										<DropdownItem key={option.value} onClick={() => handleLanguageSelect(option.value)}>
+											{option.label}
+										</DropdownItem>
+									))}
+								</DropdownMenu>
+							</Dropdown>
+							<div className="d-line-block mt-4">
+								<button
+									type="button"
+									disabled={!connectortData.length > 0}
+									onClick={onSubmit}
+									className="btn btn-primary "
+								>
+									Upload Connector
+								</button>
+							</div>
+						</Col>
+					</Row>
+					<Row>
+						<Col className="col-12 col-md-12">
+							<ConnectorList />
+						</Col>
+					</Row>
+				</Container>
 			</div>
 		</React.Fragment >
 	);

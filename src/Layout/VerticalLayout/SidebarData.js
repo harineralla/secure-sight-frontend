@@ -61,38 +61,38 @@ const SidebarData = [
 			// },
 		],
 	},
-	{
-		label: "cloud one",
-		isMainMenu: true,
-	},
-	{
-		label: "cloud one",
-		icon: "ri-cloud-fill",
-		subItem: [
-			{
-				sublabel: "Cloudone Conformity",
-				link: "/cloudone/cloudone-conformity",
-			},
-			{
-				sublabel: "Cloudone Container Security",
-				link: "/cloudone/container-security",
-			},
-			{
-				sublabel: "Smart Checks",
-				link: "/cloudone/smart-checks",
-			},
-		],
-	},
+	// {
+	// 	label: "cloud one",
+	// 	isMainMenu: true,
+	// },
+	// {
+	// 	label: "cloud one",
+	// 	icon: "ri-cloud-fill",
+	// 	subItem: [
+	// 		{
+	// 			sublabel: "Cloudone Conformity",
+	// 			link: "/cloudone/cloudone-conformity",
+	// 		},
+	// 		{
+	// 			sublabel: "Cloudone Container Security",
+	// 			link: "/cloudone/container-security",
+	// 		},
+	// 		{
+	// 			sublabel: "Smart Checks",
+	// 			link: "/cloudone/smart-checks",
+	// 		},
+	// 	],
+	// },
 	// {
 	//   label: "Tenable",
 	//   isMainMenu: true,
 	// },
-	{
-		label: "Tenable",
-		icon: "ri-cloud-fill",
-		isHasArrow: true,
-		url: "/report/tenable",
-	},
+	// {
+	// 	label: "Tenable",
+	// 	icon: "ri-cloud-fill",
+	// 	isHasArrow: true,
+	// 	url: "/report/tenable",
+	// },
 
 	{
 		label: "Inventory",
