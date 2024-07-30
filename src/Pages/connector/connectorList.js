@@ -22,7 +22,8 @@ import { Link } from "react-router-dom";
 import { allReplace, formatCapilize } from "../ulit/commonFunction";
 
 const ConnectorList = () => {
-  document.title = "Connector List | Trend Micro Unity";
+  // document.title = "Connector List | Trend Micro Unity";
+  document.title = "Connector List | Secure Sight";
 
   const [openLoader, setOpenLoader] = React.useState(false);
   const [connectorListData, setConnectorListData] = React.useState([]);

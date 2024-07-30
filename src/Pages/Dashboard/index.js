@@ -45,7 +45,8 @@ const ResponsiveReactGridLayout = ReactGridLayout.WidthProvider(
 );
 const Dashboard = () => {
   let param = useParams();
-  document.title = "Dashboard | trend micro unity";
+  // document.title = "Dashboard | trend micro unity";
+  document.title = "Dashboard | Secure Sight";
   const [deleteModal, setDeleteModal] = useState(false);
   const [openLoader, setOpenLoader] = React.useState(false);
   const [open, setOpen] = React.useState(false);

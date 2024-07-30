@@ -146,10 +146,10 @@ const CreateChart = ({ dashboardId, updateFun }) => {
       dbName: dbName,
       user_id: user_id,
     };
-    const response = await ApiServices("post", payload, ApiEndPoints.FileList);
+    // const response = await ApiServices("post", payload, ApiEndPoints.FileList);
 
-    setCSVDataList(response?.data);
-    setOpenLoader(false);
+    // setCSVDataList(response?.data);
+    // setOpenLoader(false);
   };
   // ############################################ get csv data list ########################################
 

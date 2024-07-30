@@ -26,7 +26,8 @@ import { timedata } from "../../../ulit/timeforGertData";
 import { Link } from "react-router-dom";
 
 const SmartChecksRegistriesReport = ({ url, column, title }) => {
-  document.title = "Report | trend micro unity";
+  // document.title = "Report | trend micro unity";
+  document.title = "Report | Secure Sight";
   const [openLoader, setOpenLoader] = React.useState(true);
   const [data, setData] = React.useState([]);
   const [time, setTime] = React.useState(0);

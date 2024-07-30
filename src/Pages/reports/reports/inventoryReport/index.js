@@ -14,7 +14,8 @@ import AzureInventoryReport from "./azureInventory";
 import MultipleSelect from "./selecttext";
 
 const InventoryReport = () => {
-  document.title = "Report | trend micro unity";
+  // document.title = "Report | trend micro unity";
+  document.title = "Report | Secure Sight";
   const [openLoader, setOpenLoader] = React.useState(true);
   const [inventory, setInventory] = React.useState("");
 

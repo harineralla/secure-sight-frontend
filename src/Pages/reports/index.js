@@ -24,7 +24,8 @@ const ResponsiveReactGridLayout = ReactGridLayout.WidthProvider(
 );
 
 const Report = () => {
-  document.title = "Report | trend micro unity";
+  // document.title = "Report | trend micro unity";
+  document.title = "Report | Secure Sight";
   let param = useParams();
   const [deleteModal, setDeleteModal] = useState(false);
   const [openLoader, setOpenLoader] = React.useState(false);

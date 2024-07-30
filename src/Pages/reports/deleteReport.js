@@ -19,7 +19,8 @@ import { CloseOutlined } from "@mui/icons-material";
 import DeleteModal from "../../components/Common/DeleteModal";
 
 const DeleteReport = () => {
-  document.title = "Report | trend micro unity";
+  // document.title = "Report | trend micro unity";
+  document.title = "Report | Secure Sight";
   const [reportList, setReportList] = useState([]);
   const [openLoader, setOpenLoader] = React.useState(false);
   const [deleteModal, setDeleteModal] = useState(false);

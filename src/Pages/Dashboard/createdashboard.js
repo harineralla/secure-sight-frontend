@@ -21,7 +21,8 @@ import ApiServices from "../../Network_call/apiservices";
 import { DashboardList, ReportList } from "../ulit/dashboardlist";
 
 const CreateDashboard = () => {
-  document.title = "create dashboard | trend micro unity";
+  // document.title = "create dashboard | trend micro unity";
+  document.title = "create dashboard  | Secure Sight";
 
   const [dashboardName, setDashboardName] = useState("");
   const [userData, setUserData] = React.useState({

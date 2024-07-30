@@ -25,7 +25,8 @@ const ResponsiveReactGridLayout = ReactGridLayout.WidthProvider(
 );
 
 const ScanDetails = () => {
-  document.title = "Report | trend micro unity";
+  // document.title = "Report | trend micro unity";
+  document.title = "Report | Secure Sight";
   const location = useLocation();
   const [openLoader, setOpenLoader] = React.useState(false);
   const [scanData, setScanData] = React.useState();

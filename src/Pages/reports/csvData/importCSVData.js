@@ -28,7 +28,8 @@ import ApiServices from "../../../Network_call/apiservices";
 import ApiEndPoints from "../../../Network_call/ApiEndPoints";
 
 const ImportCSVData = () => {
-	document.title = "CSV Upload | Trend Micro Unity";
+	// document.title = "CSV Upload | Trend Micro Unity";
+	document.title = "CSV Upload | Secure Sight";
 	const navigate = useNavigate()
 	const [openLoader, setOpenLoader] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);

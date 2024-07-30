@@ -24,7 +24,8 @@ import { allReplace } from "../ulit/commonFunction";
 import DeleteModal from "../Calender/DeleteModal";
 
 const DeleteConnectorIndexs = () => {
-  document.title = "Connector Index Delete | Trend Micro Unity";
+  // document.title = "Connector Index Delete | Trend Micro Unity";
+  document.title = "Connector Index Delete | Secure Sight";
 
   const [openLoader, setOpenLoader] = React.useState(false);
   const [deleteModal, setDeleteModal] = React.useState(false);

@@ -13,7 +13,8 @@ import SmartChecksScanReport from "./scan";
 import SmartChecksRegistriesReport from "./registriesList";
 
 const SmartChecks = () => {
-  document.title = "Report | trend micro unity";
+  // document.title = "Report | trend micro unity";
+  document.title = "Report | Secure Sight";
   const [inventory, setInventory] = React.useState("Scan");
 
   return (

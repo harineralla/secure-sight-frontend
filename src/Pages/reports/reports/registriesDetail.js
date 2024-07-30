@@ -13,7 +13,8 @@ import ScanCompletion from "../../Dashboard/dashboard/charts/scanCompletion";
 import SmartScanCard from "../../Dashboard/dashboard/charts/smartCheckCard";
  
 const RegistriesDetails = () => {
-  document.title = "Report | trend micro unity";
+  // document.title = "Report | trend micro unity";
+  document.title = "Report | Secure Sight";
   const location = useLocation();
   const { data, id } = location.state;
   const newData = data && data.filter((i) => i._source.name === id).pop();

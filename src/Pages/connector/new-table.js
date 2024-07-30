@@ -24,7 +24,8 @@ import "./antd-table.scss";
 // import "../../css/antd/antd.css"
 
 const ConnectorListTwo = () => {
-    document.title = "Connector List | Trend Micro Unity";
+    // document.title = "Connector List | Trend Micro Unity";
+    document.title = "Connector List | Secure Sight"
     const tooltipMessage = 'Config data is not added';
 
     const [openLoader, setOpenLoader] = React.useState(false);

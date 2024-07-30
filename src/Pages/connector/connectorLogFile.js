@@ -21,7 +21,8 @@ import ApiServices from "../../Network_call/apiservices";
 import { useLocation } from "react-router-dom";
 
 const ConnectorLogFile = () => {
-  document.title = "Connector Log | Trend Micro Unity";
+  // document.title = "Connector Log | Trend Micro Unity";
+  document.title = "Connector Log | Secure Sight";
   const location = useLocation();
   const [openLoader, setOpenLoader] = React.useState(false);
   const [connectorLogs, setConnectorLogs] = React.useState("");

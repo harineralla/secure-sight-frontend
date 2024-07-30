@@ -19,7 +19,8 @@ import ApiEndPoints from "../../../Network_call/ApiEndPoints";
 import DeleteModal from "../../../components/Common/DeleteModal";
 
 const CSVDataList = () => {
-  document.title = "CSV Data | trend micro unity";
+  // document.title = "CSV Data | trend micro unity";
+  document.title = "CSV Data | Secure Sight";
   const [csvList, setCSVList] = useState([]);
   const [openLoader, setOpenLoader] = React.useState(false);
   const [deleteModal, setDeleteModal] = useState(false);

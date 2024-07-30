@@ -24,7 +24,8 @@ const ResponsiveReactGridLayout = ReactGridLayout.WidthProvider(
 );
 
 const ContainerSecurityDashboard = () => {
-  document.title = "Dashboard | trend micro unity";
+  // document.title = "Dashboard | trend micro unity";
+  document.title = "Dashboard | Secure Sight";
 
   const dashboardRef = React.useRef();
 

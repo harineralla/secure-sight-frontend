@@ -17,7 +17,8 @@ import ConnectorList from "./connectorList";
 import ConnectorListTwo from "./new-table";
 
 const ConnectorSchedule = () => {
-	document.title = "scheduler | trend micro unity";
+	// document.title = "scheduler | trend micro unity";
+	document.title ="scheduler | Secure Sight";
 	const [openLoader, setOpenLoader] = React.useState(false);
 	const [connectorList, setConnectorList] = useState([]);
 	const [connectorName, setConnectorName] = useState("");

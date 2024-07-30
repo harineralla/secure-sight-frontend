@@ -36,7 +36,8 @@ const Layout = (props) => {
     const title = props.router.location.pathname;
     let currentage = title.charAt(1).toUpperCase() + title.slice(2);
 
-    document.title = currentage + "Trend Micro Unity";
+    // document.title = currentage + "Trend Micro Unity";
+    DocumentFragment.title = currentage + "Secure Sight";
   }, [props.router.location.pathname]);
 
   useEffect(() => {

@@ -19,7 +19,8 @@ import { CloseOutlined } from "@mui/icons-material";
 import DeleteModal from "../../components/Common/DeleteModal";
 
 const DeleteDashboard = () => {
-  document.title = "Dashboard | trend micro unity";
+  // document.title = "Dashboard | trend micro unity";
+  document.title = "Dashboard | Secure Sight";
   const [dashboardList, setDadhboardList] = useState([]);
   const [openLoader, setOpenLoader] = React.useState(false);
   const [deleteModal, setDeleteModal] = useState(false);

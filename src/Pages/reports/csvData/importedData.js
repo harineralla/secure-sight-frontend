@@ -214,7 +214,8 @@ const CSVData = () => {
   const document_name = searchParams.get("document_name");
   const id = searchParams.get("_id");
 
-  document.title = "CSV Data | trend micro unity";
+  // document.title = "CSV Data | trend micro unity";
+  document.title = "CSV Data | Secure Sight";
 
   const [data, setData] = useState([]);
   const [openLoader, setOpenLoader] = React.useState(false);

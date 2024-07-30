@@ -31,7 +31,8 @@ import { editProfile, resetProfileFlag } from "../../store/actions";
 import user1 from "../../assets/images/logo/Images/profile.png";
 
 const UserProfile = () => {
-  document.title = "Profile | Trend Micro Unity";
+  // document.title = "Profile | Trend Micro Unity";
+  document.title = "Profile | Secure Sight";
 
   const dispatch = useDispatch();
 

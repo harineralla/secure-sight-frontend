@@ -225,7 +225,8 @@ const CreateSubReport = ({ reportId, GetReportData }) => {
 
   const createReport = async () => {
     setOpenLoader(true);
-    var firstRecord = tableData.length > 0 ? Array(1).fill(tableData[0]) : [];
+    // var firstRecord = tableData.length > 0 ? Array(1).fill(tableData) : [];
+    var firstRecord = tableData;
     const filteredData = (tableData.length > 0 && firstRecord.map(row => {
       const newRow = {};
 

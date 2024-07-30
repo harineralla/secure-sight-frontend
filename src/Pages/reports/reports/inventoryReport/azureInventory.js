@@ -20,7 +20,8 @@ import { timedata } from "../../../ulit/timeforGertData";
 import MultipleSelect from "./selecttext";
 
 const AzureInventoryReport = ({ url, column }) => {
-  document.title = "Report | trend micro unity";
+  // document.title = "Report | trend micro unity";
+  document.title = "Report | Secure Sight";
   const [openLoader, setOpenLoader] = React.useState(true);
   const [data, setData] = React.useState([]);
   const [filteredData, setFilteredData] = React.useState([]);

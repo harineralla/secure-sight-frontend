@@ -25,7 +25,8 @@ const ResponsiveReactGridLayout = ReactGridLayout.WidthProvider(
 );
 
 const SmartChecksDashboard = () => {
-  document.title = "Dashboard | trend micro unity";
+  // document.title = "Dashboard | trend micro unity";
+  document.title = "Dashboard | Secure Sight";
   const dashboardRef = React.useRef();
   const [data, setData] = React.useState(null);
   const [openLoader, setOpenLoader] = React.useState([]);

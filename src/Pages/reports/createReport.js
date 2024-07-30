@@ -21,7 +21,8 @@ import ApiServices from "../../Network_call/apiservices";
 import { DashboardList, ReportList } from "../ulit/dashboardlist";
 
 const CreateReport = () => {
-    document.title = "create report | trend micro unity";
+    // document.title = "create report | trend micro unity";
+    document.title = "create report | Secure Sight";
 
     const [openLoader, setOpenLoader] = React.useState(false);
     const [reportName, setReportName] = useState("");

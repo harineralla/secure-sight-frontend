@@ -10,7 +10,8 @@ import { Backdrop, CircularProgress } from "@mui/material";
 import { objectkey } from "../ulit/commonFunction"; 
 
 const ReportSchedule = () => {
-  document.title = "scheduler | trend micro unity";
+  // document.title = "scheduler | trend micro unity";
+  document.title = "scheduler | Secure Sight";
   const [openLoader, setOpenLoader] = React.useState(false);
   const [reportList, setReportList] = useState([]);
   const [emailSchedulerData, setEmailSchedulerData] = useState({

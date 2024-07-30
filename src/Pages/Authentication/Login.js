@@ -40,7 +40,8 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 const Login = (props) => {
-	document.title = "Login | Trend Micro Unity";
+	// document.title = "Login | Trend Micro Unity";
+	document.title = "Login | Secure Sight"
 
 	const dispatch = useDispatch();
 
@@ -86,11 +87,11 @@ const Login = (props) => {
 								infrastructure
 							</h4>
 							<br />
-							<h4>
+							{/* <h4>
 								Trend Micro Unity tool is a web-based reporting application.
 								Unity extracts customised reports from Trend Micro CloudOne/Deep
 								Security Servers via API calls.
-							</h4>
+							</h4> */}
 							<br />
 							<h4>
 								Currently the tool hosts a series of custom reports for CloudOne

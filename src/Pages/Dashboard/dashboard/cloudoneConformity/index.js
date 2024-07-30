@@ -19,7 +19,8 @@ const ResponsiveReactGridLayout = ReactGridLayout.WidthProvider(
 );
 
 const CloudoneConformityDashboard = () => {
-  document.title = "Dashboard | trend micro unity";
+  // document.title = "Dashboard | trend micro unity";
+  document.title = "Dashboard | Secure Sight";
 
   const dashboardRef = React.useRef();
 
